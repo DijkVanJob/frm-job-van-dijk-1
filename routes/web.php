@@ -15,7 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    $exampleString = 'Hello from routes.';
-   return view('subviews.hello' , compact('exampleString'));
-});
+Route::get('/hello', 'HelloController@index');
