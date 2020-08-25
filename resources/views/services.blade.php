@@ -7,6 +7,16 @@
 
     <p>Lorem ipsum dolor sit amet</p>
 
+    <form action="/service" method="post">
+        <input type="text" name="name" autocomplete="off">
+
+        @csrf
+
+        <button>Add Service</button>
+    </form>
+
+    <p style="color: red;">@error('name') {{ $message }} @enderror</p>
+
     <ul>
         @forelse($services as $service)
         <li>{{ $service->name }}</li>
