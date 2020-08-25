@@ -11,10 +11,4 @@ class HelloController extends Controller
         $exampleString = 'Hello from HelloController.php.';
         return view('about' , compact('exampleString'));
     }
-
-    public function services()
-    {
-        $services = \App\Service::all();
-        return view('services', compact('services'));
-    }
 }
