@@ -3,8 +3,6 @@
 @section('title', 'Services')
 
 @section('content')
-    <h1>Services</h1>
-
     <p>Lorem ipsum dolor sit amet</p>
 
     <form action="/service" method="post">
