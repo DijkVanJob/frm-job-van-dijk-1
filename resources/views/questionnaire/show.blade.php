@@ -9,9 +9,30 @@
 
                 <div class="card-body">
                     <a class="btn btn-dark" href="/questionnaires/{{ $questionnaire->id }}/questions/create">Add new Question to Questionnaire</a>
+                    <a class="btn btn-dark" href="/surveys/{{ $questionnaire->id }}-{{ Str::slug($questionnaire->title) }}">Take Survey</a>
                 </div>
             </div>
         </div>
+
+        @forelse($questionnaire->questions as $question)
+            <div class="col-md-8 mt-3">
+                <div class="card">
+                    <div class="card-header">{{ $question->question }}</div>
+
+                    <div class="card-body">
+                        <ul class="list-group">
+                            @foreach($question->answers as $answer)
+                                <li class="list-group-item">{{ $answer->answer }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="col-md-8 mt-5">
+                <h1 class="text-center">No Questions yet.</h1>
+            </div>
+        @endforelse
     </div>
 </div>
 @endsection
