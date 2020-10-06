@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $questionnaires = Questionnaire::all();
+        $questionnaires = auth()->user()->questionnaires;
         return view('home', compact('questionnaires'));
     }
 }

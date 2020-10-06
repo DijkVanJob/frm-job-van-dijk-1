@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Question;
 use \App\Questionnaire;
 
 class QuestionController extends Controller
@@ -14,8 +14,6 @@ class QuestionController extends Controller
 
     public function store(Questionnaire $questionnaire)
     {
-//        dd(request()->all());
-
         $data = request()->validate([
             'question.question' => 'required',
             'answers.*.answer' => 'required'
@@ -25,5 +23,13 @@ class QuestionController extends Controller
         $question->answers()->createMany($data['answers']);
 
         return redirect('/questionnaires/'.$questionnaire->id);
+    }
+
+    public function destroy(Questionnaire $questionnaire, Question $question)
+    {
+        $question->answers()->delete();
+        $question->delete();
+
+        return redirect($questionnaire->path());
     }
 }
