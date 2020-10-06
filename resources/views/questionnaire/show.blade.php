@@ -8,7 +8,7 @@
                 <div class="card-header">{{ $questionnaire->title }}</div>
 
                 <div class="card-body">
-
+                    <a class="btn btn-dark" href="/questionnaires/{{ $questionnaire->id }}/questions/create">Add new Question to Questionnaire</a>
                 </div>
             </div>
         </div>
